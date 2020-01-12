@@ -1,24 +1,18 @@
-import React from 'react';
-import logo from './logo.svg';
+import React,{useState} from 'react';
+import Weather from './Weather'
 import './App.css';
 
 function App() {
+  const [counter, setCounter] = useState(0)
+  const [weather] = useState({city:'Miami', temperature:'80F'})
+  const [showWeather, setShowWeather] = useState(false)
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      {showWeather ? <Weather weather={weather} /> : null }
+      {counter}
+      <br/>
+      <button onClick={()=>setCounter(counter + 1)}>Increment</button>
+      <button onClick={()=> setShowWeather(true)}>Show Weather</button>
     </div>
   );
 }
